@@ -1,16 +1,22 @@
 {% extends 'base.html' %}
 {% block content %}
-<h3>Add Lost Item</h3>
-<form method="POST" enctype="multipart/form-data">
-  {% csrf_token %}
-  <input class="form-control mb-2" name="title" placeholder="Title" required>
-  <textarea class="form-control mb-2" name="description" placeholder="Description"></textarea>
-  <select class="form-control mb-2" name="category">
-    <option>Electronics</option><option>Books</option><option>Clothing</option><option>ID Card</option><option>Other</option>
-  </select>
-  <input class="form-control mb-2" name="location" placeholder="Location">
-  <input class="form-control mb-2" type="date" name="date_lost">
-  <input class="form-control mb-2" type="file" name="image">
-  <button class="btn btn-primary">Submit</button>
-</form>
+<div class="items-container">
+  <h3>Add Lost Item</h3>
+  <form method="POST" enctype="multipart/form-data" class="item-form">
+    {% csrf_token %}
+    <input class="form-control mb-2" name="title" placeholder="Title" required>
+    <textarea class="form-control mb-2" name="description" placeholder="Description"></textarea>
+    <select class="form-control mb-2" name="category">
+      <option>Electronics</option>
+      <option>Books</option>
+      <option>Clothing</option>
+      <option>ID Card</option>
+      <option>Other</option>
+    </select>
+    <input class="form-control mb-2" name="location" placeholder="Location">
+    <input class="form-control mb-2" type="date" name="date_lost">
+    <input class="form-control mb-2" type="file" name="image">
+    <button class="btn btn-primary">Submit</button>
+  </form>
+</div>
 {% endblock %}

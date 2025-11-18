@@ -1,10 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
-<h3>Register</h3>
-<form method="POST">
-  {% csrf_token %}
-  <input name="username" class="form-control mb-2" placeholder="Username" required>
-  <input name="password" type="password" class="form-control mb-2" placeholder="Password" required>
-  <button class="btn btn-primary">Register</button>
-</form>
+<div class="login-page-container cal-sans-regular">
+  <h1 class="">JIIT Lost & Found</h1>
+  <h5 class="">Create an account</h5>
+  <form method="POST" class="form-login">
+    {% csrf_token %}
+    <input name="username" class="form-control mb-2" placeholder="Username" required>
+    <input name="password" type="password" class="form-control mb-2" placeholder="Password" required>
+    <button class="btn btn-success">Register</button>
+  </form>
+</div>
 {% endblock %}

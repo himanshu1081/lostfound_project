@@ -6,6 +6,9 @@ from django.db.models import Q
 def home(request):
     return render(request, 'items/home.html')
 
+def menu(request):
+    return render(request, 'items/menu.html')
+
 def lost_list(request):
     q = request.GET.get('q', '')
     items = LostItem.objects.filter(Q(title__icontains=q) | Q(description__icontains=q))

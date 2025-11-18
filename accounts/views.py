@@ -9,15 +9,17 @@ def register_view(request):
         password = request.POST.get('password')
         if username and password:
             User.objects.create_user(username=username, password=password)
-            return redirect('login')
+            return redirect('menu')
     return render(request, 'accounts/register.html')
 
 def login_view(request):
+    if request.user.is_authenticated:
+        return redirect('menu')
     if request.method == 'POST':
         user = authenticate(request, username=request.POST.get('username'), password=request.POST.get('password'))
         if user:
             login(request, user)
-            return redirect('/')
+            return redirect('/menu')
     return render(request, 'accounts/login.html')
 
 def logout_view(request):

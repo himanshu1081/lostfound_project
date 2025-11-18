@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="menu-page-container cal-sans-regular">
+  <div class="menu-card-container">
+    <div class="menu-box" href="{% url 'add_found' %}">
+      <video autoplay loop muted playsinline class="menu-video">
+        <source src="{% static 'item_found.mp4' %}" type="video/mp4">
+      </video>
+      <a class="nav-link menu-text" href="{% url 'add_lost' %}">Lost an Item?</a>
+    </div>
+
+    <div class="menu-box">
+      <video autoplay loop muted playsinline class="menu-video">
+        <source src="{% static 'item_found.mp4' %}" type="video/mp4">
+      </video>
+      <a class="nav-link menu-text" href="{% url 'add_found' %}">Found an Item?</a>
+    </div>
+  </div>
+
+  <div class="button-container">
+    <a href="{% url 'lost_list' %}" class="button-list">
+      Lost items List
+    </a>
+    <a href="{% url 'found_list' %}" class="button-list">
+      Found Items List
+    </a>
+  </div>
+
+</div>
+{% endblock %}
