@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<div class="hero">
+  <video autoplay loop muted playsinline class="w-100 hero-video">
+    <source src="{% static 'hero.mp4' %}" type="video/mp4">
+  </video>
+  <div class="hero-text cal-sans-regular no-select ">
+    <h1>JIIT Lost & Found</h1>
+    <p>Helping things find their way back home.</p>
+    <div class="login-button-container ">
+      <a href="{% url 'login' %}" class="login-button">Login</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

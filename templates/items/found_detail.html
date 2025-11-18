@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>{{ item.title }}</h3>
+{% if item.image %}
+<img src="{{ item.image.url }}" class="img-fluid mb-3">
+{% endif %}
+<p>{{ item.description }}</p>
+<p><strong>Category:</strong> {{ item.category }} • <strong>Location:</strong> {{ item.location }}</p>
+
+{% if user.is_authenticated and item.user == user %}
+  <a href="{% url 'resolve_found' item.id %}" class="btn btn-warning">Mark Returned</a>
+{% endif %}
+
+<h5 class="mt-4">Possible lost matches</h5>
+<ul>
+  {% for m in matches %}
+    <li><a href="{% url 'lost_detail' m.id %}">{{ m.title }}</a></li>
+  {% empty %}
+    <li>No matches</li>
+  {% endfor %}
+</ul>
+{% endblock %}
