@@ -60,18 +60,3 @@ def found_detail(request, id):
     matches = LostItem.objects.filter(category=item.category).filter(title__icontains=item.title.split()[0])[:5]
     return render(request, 'items/found_detail.html', {'item': item, 'matches': matches})
 
-@login_required
-def resolve_lost(request, id):
-    item = get_object_or_404(LostItem, id=id)
-    if item.user == request.user:
-        item.resolved = True
-        item.save()
-    return redirect('lost_list')
-
-@login_required
-def resolve_found(request, id):
-    item = get_object_or_404(FoundItem, id=id)
-    if item.user == request.user:
-        item.returned = True
-        item.save()
-    return redirect('found_list')

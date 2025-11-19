@@ -10,6 +10,4 @@ urlpatterns = [
     path('add-found', views.add_found, name='add_found'),
     path('lost/<int:id>/', views.lost_detail, name='lost_detail'),
     path('found/<int:id>/', views.found_detail, name='found_detail'),
-    path('resolve-lost/<int:id>/', views.resolve_lost, name='resolve_lost'),
-    path('resolve-found/<int:id>/', views.resolve_found, name='resolve_found'),
 ]

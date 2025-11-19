@@ -1,22 +1,37 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
-<h3>{{ item.title }}</h3>
-{% if item.image %}
-<img src="{{ item.image.url }}" class="img-fluid mb-3">
-{% endif %}
-<p>{{ item.description }}</p>
-<p><strong>Category:</strong> {{ item.category }} • <strong>Location:</strong> {{ item.location }}</p>
 
-{% if user.is_authenticated and item.user == user %}
-<a href="{% url 'resolve_found' item.id %}" class="btn btn-warning">Mark Returned</a>
-{% endif %}
+<div class="detail-container">
 
-<h5 class="mt-4">Possible lost matches</h5>
-<ul>
-  {% for m in matches %}
-  <li><a href="{% url 'lost_detail' m.id %}">{{ m.title }}</a></li>
-  {% empty %}
-  <li>No matches</li>
-  {% endfor %}
-</ul>
+  <div class="detail-card">
+
+    <h2 class="detail-title">{{ item.title }}</h2>
+
+    {% if item.image %}
+    <img src="{{ item.image.url }}" class="detail-image">
+    {% endif %}
+
+    <p class="detail-description">{{ item.description }}</p>
+
+    <p class="detail-meta">
+      <strong>Category:</strong> {{ item.category }}
+      &nbsp;•&nbsp;
+      <strong>Location:</strong> {{ item.location }}
+    </p>
+
+
+    <h4 class="mt-4">Possible Lost Matches</h4>
+    <ul class="matches-list">
+      {% for m in matches %}
+        <li><a href="{% url 'lost_detail' m.id %}">{{ m.title }}</a></li>
+      {% empty %}
+        <li>No matches found</li>
+      {% endfor %}
+    </ul>
+
+  </div>
+
+</div>
+
 {% endblock %}
